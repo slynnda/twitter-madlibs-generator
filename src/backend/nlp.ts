@@ -1,6 +1,6 @@
-import { Lexer, Tagger, LexedWord, TaggedWord, PartOfSpeech } from 'pos'
+import { Lexer, Tagger, LexedWord, TaggedWord as POSTaggedWord, PartOfSpeech } from 'pos'
 
-type TagsMap = {
+export interface TaggedWord = {
     pos: PartOfSpeech,
     word: string
 }
@@ -12,7 +12,7 @@ export function lex(text:string):LexedWord[] {
     return lexer.lex(text)
 }
 
-export function tag(words:LexedWord[]):TagsMap[] {
+export function tag(words:LexedWord[]):TaggedWord[] {
     const tagged = tagger.tag(words)
     return tagged.map((t) => {
         return {
