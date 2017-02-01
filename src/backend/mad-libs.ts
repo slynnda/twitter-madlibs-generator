@@ -56,11 +56,20 @@ function tagChangable(tagged:TaggedWord[]):ChangeableWord[] {
   })
 }
 
-// function generateBlanks(changeables:ChangeableWord[], probabilityBlank:number):UnfilledMadLib {
-//   return changeables.map((c) => {
-//     const makeMeBlank = c.isChangable && Math.random() < probabilityBlank
-//     if (makeMeBlank) return {
-//       partOfSpeech:
-//     }
-//   })
-// }
+function generateBlanks(changeables:ChangeableWord[], probabilityBlank:number):UnfilledMadLib {
+  return changeables.map((c) => {
+    const makeMeBlank = c.isChangable && Math.random() < probabilityBlank
+    if (makeMeBlank) {
+      return {
+        posInfo: c.posInfo,
+        originalWord: c.word,
+        type: 'unfilled' as 'unfilled'
+      }
+    } else {
+      return {
+        text: c.word,
+        type: 'text' as 'text'
+      }
+    }
+  })
+}
