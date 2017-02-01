@@ -1,7 +1,10 @@
-import { UnfilledMadLib, Map } from '../types'
+import { PartOfSpeech } from 'pos'
+
+import { UnfilledMadLib } from '../types'
 import { lex, tag, TaggedWord } from './nlp'
 
-const changableTags:Map<PartOfSpeech,string> = {
+
+const changableTags:{ [key:string /* PartOfSpeech */]:string } = {
   'JJ': 'adjective',
   'JJR': 'adjective-comparative',
   'JJS': 'adjective-superlative',
@@ -21,7 +24,7 @@ const changableTags:Map<PartOfSpeech,string> = {
 }
 
 interface ChangeableWord extends TaggedWord {
-  isChangable: boolean  
+  isChangable: boolean
 }
 
 export function generateMadLib(text:string):any {
@@ -30,9 +33,8 @@ export function generateMadLib(text:string):any {
     return tagged
 }
 
-function tagChangable(tagged:TaggedWord[]):ChangableWord[] {
-  return tagged.map((taggedWord) => {
+// function tagChangable(tagged:TaggedWord[]):ChangeableWord[] {
+//   return tagged.map((taggedWord) => {
 
-  })
-
-}
+//   })
+// }

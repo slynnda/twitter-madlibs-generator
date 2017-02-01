@@ -15,7 +15,3 @@ export type MadLibFilledSpace = {
     partOfSpeech: PartOfSpeech
     text: string
 }
-
-export interface Map<K,V> {
-    [key:K]:V
-}

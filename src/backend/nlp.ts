@@ -1,7 +1,7 @@
 import { Lexer, Tagger, LexedWord, TaggedWord as POSTaggedWord, PartOfSpeech } from 'pos'
 
-export interface TaggedWord = {
-    pos: PartOfSpeech,
+export interface TaggedWord {
+    pos: PartOfSpeech
     word: string
 }
 
