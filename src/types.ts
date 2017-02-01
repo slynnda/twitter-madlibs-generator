@@ -5,6 +5,7 @@ export type FilledMadLib = (MadLibTextBlock | MadLibFilledSpace)[]
 export type MadLibPartType = 'unfilled' | 'filled' | 'text'
 
 export type MadLibTextBlock = {
+    posInfo?: PartOfSpeechInfo,  // TODO: get rid of this field, because text blocks might have more than one word in them.
     text: string,
     type: 'text'
 }
@@ -28,6 +29,8 @@ export interface PartOfSpeechInfo {
     example: string
 }
 
-export interface PartOfSpeechInfoMap {
-    [k:string]:PartOfSpeechInfo
+export type PartOfSpeechInfoMap = Map<PartOfSpeechInfo>
+
+export interface Map<V> {
+    [k:string]:V
 }
