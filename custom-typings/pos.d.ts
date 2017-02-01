@@ -1,7 +1,7 @@
 
 declare module "pos" {
     export type LexedWord = string
-    export type TaggedWord = (string | PartOfSpeech)[]
+    export type TaggedWord = (string | PartOfSpeech)[]  // ['CC', 'and']
 
     export type PartOfSpeech = (
             'CC' | // Coord Conjuncn           and,but,or

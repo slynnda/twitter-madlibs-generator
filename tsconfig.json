@@ -6,10 +6,11 @@
         "outDir": "dist",
         "target": "es5"
     },
-    "files": [
+    "include": [
         "custom-typings/index.d.ts",
         "src/index.ts",
-        "src/index.test.ts",
+        "src/*.test.ts",
+        "src/**/*.test.ts",
         "src/backend/server.ts"
     ]
 }

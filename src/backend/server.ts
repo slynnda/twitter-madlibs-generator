@@ -8,7 +8,7 @@ type VoidCallback = () => void
 
 app.get('/', (req, res, next) => {
   console.log('Got the request on path: /')
-  res.send(generateMadLib('The quick brown fox jumps over the lazy dog.'))
+  res.send(generateMadLib('The quick brown fox jumps over the lazy dog.', { probabilityBlank: 0.5 }))
 })
 
 export function start(callback:VoidCallback) {

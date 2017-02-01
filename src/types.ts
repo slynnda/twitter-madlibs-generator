@@ -1,4 +1,4 @@
-export type PartOfSpeech = 'Noun' | 'Verb' | 'Adjective' | 'Adverb'
+import { PartOfSpeech } from 'pos'
 
 export type UnfilledMadLib = (MadLibTextBlock | MadLibUnfilledSpace)[]
 export type FilledMadLib = (MadLibTextBlock | MadLibFilledSpace)[]
@@ -8,10 +8,20 @@ export type MadLibTextBlock = {
 }
 
 export type MadLibUnfilledSpace = {
-    partOfSpeech: PartOfSpeech
+    partOfSpeech: PartOfSpeechInfo
 }
 
 export type MadLibFilledSpace = {
-    partOfSpeech: PartOfSpeech
+    partOfSpeech: PartOfSpeechInfo
     text: string
+}
+
+export interface PartOfSpeechInfo {
+    pos: PartOfSpeech
+    description: string
+    example: string
+}
+
+export interface PartOfSpeechInfoMap {
+    [k:string]:PartOfSpeechInfo
 }
