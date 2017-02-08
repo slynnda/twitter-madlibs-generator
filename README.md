@@ -1,4 +1,4 @@
-![Twitlibs](https://raw.githubusercontent.com/technicallyspeaking/twitter-madlibs-generator/master/img/logo.svg)
+![Twitlibs](./img/logo.png)
 
 # twitter-madlibs-generator
 
