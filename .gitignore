@@ -42,3 +42,6 @@ dist
 # Swap files
 *.swp
 *.*~
+
+# Mac OS
+.DS_Store

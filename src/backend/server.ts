@@ -12,8 +12,12 @@ app.get('/', (req, res, next) => {
   res.send(generateMadLib('The quick brown fox jumps over the lazy dog.', { probabilityBlank: 0.5 }))
 })
 
+app.get('/dist/bundle.js', (req, res, next) => {
+  res.sendFile(join(__dirname, '../../', 'dist', 'frontend', 'bundle.js'))
+})
+
 app.get('/index.html', (req, res, next) => {
- res.sendFile(join(__dirname, '../../', 'src', 'frontend', 'index.html'))
+  res.sendFile(join(__dirname, '../../', 'src', 'frontend', 'index.html'))
 })
 
 export function start(callback:VoidCallback) {

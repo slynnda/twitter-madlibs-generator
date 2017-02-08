@@ -1,3 +1,5 @@
+![Twitlibs](/img/logo.svg =200x200)
+
 # twitter-madlibs-generator
 
 This project contains the source code for a madlibs generator based on Twitter tweets.
@@ -10,3 +12,8 @@ This project contains the source code for a madlibs generator based on Twitter t
 
 - Start it. `npm start`
 - Go to [http://localhost:1729](http://localhost:1729) in your browser
+
+
+## Notes
+
+- Logo courtesy of [Logodust](http://logodust.com/)
