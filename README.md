@@ -1,4 +1,4 @@
-![Twitlibs](/img/logo.svg =200x200)
+<img alt="Twitlibs" src="/img/logo.svg" style="width:200px; height:200px"/>
 
 # twitter-madlibs-generator
 
