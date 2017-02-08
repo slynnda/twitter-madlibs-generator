@@ -5,7 +5,7 @@ export type FilledMadLib = (MadLibTextBlock | MadLibFilledSpace)[]
 export type MadLibPartType = 'unfilled' | 'filled' | 'text'
 
 export type MadLibTextBlock = {
-    posInfo?: PartOfSpeechInfo,  // TODO: get rid of this field, because text blocks might have more than one word in them.
+    posInfo: PartOfSpeechInfo,
     text: string,
     type: 'text'
 }

@@ -1,7 +1,7 @@
 import { PartOfSpeech } from 'pos'
-import { pickBy, includes } from 'lodash'
+import { pickBy, includes, last } from 'lodash'
 
-import { UnfilledMadLib, PartOfSpeechInfoMap, Map } from '../types'
+import { UnfilledMadLib, PartOfSpeechInfoMap, Map, MadLibTextBlock, MadLibUnfilledSpace } from '../types'
 import { lex, tag, TaggedWord, partsOfSpeech } from './nlp'
 
 
@@ -87,6 +87,7 @@ function generateBlanks(changeables:ChangeableWord[], probabilityBlank:number):U
       }
     } else {
       return {
+        posInfo: c.posInfo,
         text: c.word,
         type: 'text' as 'text'
       }
@@ -94,45 +95,40 @@ function generateBlanks(changeables:ChangeableWord[], probabilityBlank:number):U
   })
 }
 
-// function joinTextBlocks(madLib:UnfilledMadLib):UnfilledMadLib {
-//   const toReturn = []
-//   let currentTextPart = null
-//   madLib.forEach((part) => {
-//     if (part.type === 'unfilled') {
-//       if (!!currentTextPart) {
-//         toReturn.push(currentTextPart)
-//         currentTextPart = null
-//       }
-//       toReturn.push(part)
-//     }
-
-//     else if (part.type === 'text') {
-//       if (!currentTextPart) currentTextPart
-
-//     }
-
-//     else if (isPunctuationPOS(part.posInfo.pos)) {
-
-//     }
-//   })
-// }
-
 function joinTextBlocks(madLib:UnfilledMadLib):UnfilledMadLib {
-  const toReturn = []
-  let currentTextSegment = null
-  for (let i = 0, j = madLib.length; i < j; i++) {
-    currentTextSegment = madLib[i]
-    if (currentTextSegment.type === 'text') {
-      if (isPunctuationPOS(currentTextSegment.posInfo.pos)) {
-        // TODO: Punctuation has to be joined into a text segment
-        // in a different way than non-punctuation because we don't
-        // join punctuation into sentences with spaces.
-      } else {
-        // TODO: Handle all non-punctuation text cases.
+  const toReturn:UnfilledMadLib = []
+  let currentTextPart:MadLibTextBlock = null
+  madLib.forEach((part:MadLibTextBlock | MadLibUnfilledSpace) => {
+    if (part.type === 'unfilled') {
+      if (!!currentTextPart) {
+        toReturn.push(currentTextPart)
+        currentTextPart = null
       }
-    } else {
-
+      toReturn.push(part)
     }
-  }
 
+    else if (part.type === 'text') {
+      if (!currentTextPart) {
+        currentTextPart = part
+      }
+
+      else if (isPunctuationPOS(part.posInfo.pos)) {
+        currentTextPart = {
+          ...currentTextPart,
+          text: currentTextPart.text + part.text
+        }
+      }
+
+      else {
+        currentTextPart = {
+          ...currentTextPart,
+          text: currentTextPart.text + ' ' + part.text
+        }
+      }
+    }
+  })
+
+  if (!!currentTextPart) toReturn.push(currentTextPart)
+
+  return toReturn
 }
