@@ -1,4 +1,6 @@
-<img alt="Twitlibs" src="https://raw.githubusercontent.com/technicallyspeaking/twitter-madlibs-generator/img/logo.svg" style="width:200px; height:200px"/>
+<a href="https://github.com/technicallyspeaking/twitter-madlibs-generator">
+    <img alt="Twitlibs" src="https://raw.githubusercontent.com/technicallyspeaking/twitter-madlibs-generator/img/logo.svg" width="200px"/>
+</a>
 
 # twitter-madlibs-generator
 
