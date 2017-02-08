@@ -38,3 +38,7 @@ jspm_packages
 
 # Build directory
 dist
+
+# Swap files
+*.swp
+*.*~
